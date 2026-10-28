@@ -488,8 +488,8 @@ final class LemonSqueezyLicenseManager: ObservableObject {
     private let kInstanceId = "geo_ls_instance_id"
     private let kActivatedAt = "geo_ls_activated_at"
 
-    static let defaultIndieCheckoutURL = "https://georadar.lemonsqueezy.com/buy/indie-pro?discount=PHLAUNCH20"
-    static let defaultAgencyCheckoutURL = "https://georadar.lemonsqueezy.com/buy/agency-whitelabel?discount=PHLAUNCH20"
+    static let defaultIndieCheckoutURL = "https://opc-yu.lemonsqueezy.com/checkout/buy/4772cc21-6051-4f7a-a106-ea33f7cd5676"
+    static let defaultAgencyCheckoutURL = "https://opc-yu.lemonsqueezy.com/checkout/buy/4772cc21-6051-4f7a-a106-ea33f7cd5676"
 
     @Published var licenseKey: String = ""
     @Published var maskedKey: String = ""
