@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GEO Radar Pro Benchmark Lab — 2026 Developer SaaS GEO Readiness Leaderboard</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --surface: #111827;
+      --surface-hover: #1e293b;
+      --border: #1f2937;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --emerald: #10b981;
+      --emerald-bg: rgba(16, 185, 129, 0.12);
+      --amber: #f59e0b;
+      --amber-bg: rgba(245, 158, 11, 0.12);
+      --indigo: #818cf8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top, #111827 0%, #0b0f19 60%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 24px 80px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, #ffffff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 880px;
+      margin-bottom: 32px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .stat-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .stat-sub {
+      font-size: 13px;
+      color: var(--emerald);
+      margin-top: 4px;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .table-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow-x: auto;
+      margin-bottom: 40px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14px;
+    }
+    th {
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    td {
+      padding: 18px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:hover td {
+      background: rgba(30, 41, 59, 0.45);
+    }
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 13px;
+      background: #1e293b;
+      color: #e2e8f0;
+    }
+    .rank-1 {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0b0f19;
+    }
+    .rank-2 {
+      background: linear-gradient(135deg, #94a3b8, #cbd5e1);
+      color: #0b0f19;
+    }
+    .rank-3 {
+      background: linear-gradient(135deg, #b45309, #fbbf24);
+      color: #0b0f19;
+    }
+    .brand-cell {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-name {
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+    }
+    .brand-domain {
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .score-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 15px;
+    }
+    .score-high {
+      background: var(--emerald-bg);
+      color: var(--emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .score-mid {
+      background: var(--amber-bg);
+      color: var(--amber);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .subscores {
+      font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+    .ifs-tuple {
+      font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: 12px;
+      color: var(--indigo);
+      background: rgba(129, 140, 248, 0.1);
+      padding: 4px 8px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 4px;
+    }
+    .action-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 11px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      border: 1px solid var(--border);
+      background: #1e293b;
+      color: #f8fafc;
+    }
+    .btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .btn-primary {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: var(--accent);
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 20px;
+    }
+    .site-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .site-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+    .site-card-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .site-card-cat {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .site-gap {
+      font-size: 13px;
+      color: #cbd5e1;
+      background: rgba(15, 23, 42, 0.65);
+      border-left: 3px solid var(--accent);
+      padding: 10px 12px;
+      border-radius: 6px;
+      margin: 12px 0 18px;
+    }
+    .footer {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-badge">⚡ GEO Radar Pro Benchmark Lab · Live Cold-Start Audit Showcase</div>
+    <h1>2026 Overseas AI & Developer SaaS GEO Leaderboard</h1>
+    <p class="subtitle">
+      Real-time HTTP technical audit, AI Crawler permission verification (8 bots), <code>/llms.txt</code> standard compliance, Schema.org JSON-LD entity extraction, and Intuitionistic Fuzzy Set (IFS) Citation Stability scoring across 5 flagship developer tools.
+    </p>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Audited Flagship Sites</div>
+        <div class="stat-value">5 SaaS</div>
+        <div class="stat-sub">100% Live HTTP 200 OK</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Top GEO Readiness</div>
+        <div class="stat-value">95 / 100</div>
+        <div class="stat-sub">Cursor (cursor.com) Ranked #1</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">AI Crawler &amp; llms.txt Adoption</div>
+        <div class="stat-value">100% (5/5)</div>
+        <div class="stat-sub">All 5 allow 8/8 AI bots &amp; ship /llms.txt</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Key Differentiation Gap</div>
+        <div class="stat-value">Schema &amp; E-E-A-T</div>
+        <div class="stat-sub">95 pts (Cursor) vs 52 pts (Linear/Cal.com)</div>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <span>📊 Live GEO Readiness &amp; IFS Stability Leaderboard</span>
+      <a class="btn btn-primary" href="./00-Cold-Start-Outreach-Playbook.md">📖 View Outreach Playbook (.md)</a>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Brand &amp; Client</th>
+            <th>HTTP / Latency</th>
+            <th>GEO Readiness</th>
+            <th>Sub-Scores (25x4)<br><small>Bots / llms / Schema / EEAT</small></th>
+            <th>IFS Stability &amp; (μ, π, ν)</th>
+            <th>AI Bots &amp; /llms.txt</th>
+            <th>Schema JSON-LD</th>
+            <th>One-Click Deliverables</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rank-badge rank-1">#1</span></td>
+            <td>
+              <div class="brand-cell">
+                <span class="brand-name">Cursor</span>
+                <a class="brand-domain" href="https://cursor.com" target="_blank">cursor.com · Cursor (Anysphere)</a>
+              </div>
+            </td>
+            <td><code>200 OK</code><br><small style="color:var(--muted)">1,448 ms</small></td>
+            <td><span class="score-pill score-high">95 / 100</span></td>
+            <td><span class="subscores">25 / 25 / 24 / 21</span></td>
+            <td>
+              <strong>85 / 100</strong><br>
+              <span class="ifs-tuple">(0.878, 0.082, 0.040)</span>
+            </td>
+            <td>8/8 Allowed<br><small style="color:var(--emerald)">✅ /llms.txt</small></td>
+            <td><strong>2 Blocks</strong><br><small style="color:var(--muted)">Organization, WebSite</small></td>
+            <td>
+              <div class="action-links">
+                <a class="btn btn-primary" href="./cursor.com/agency-audit-report.html">HTML Report</a>
+                <a class="btn" href="./cursor.com/llms.txt">llms.txt</a>
+                <a class="btn" href="./cursor.com/schema-jsonld.html">schema-jsonld.html</a>
+                <a class="btn" href="./cursor.com/eeat-comparison-block.md">EEAT MD</a>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="rank-badge rank-2">#2</span></td>
+            <td>
+              <div class="brand-cell">
+                <span class="brand-name">Resend</span>
+                <a class="brand-domain" href="https://resend.com" target="_blank">resend.com · Resend Inc.</a>
+              </div>
+            </td>
+            <td><code>200 OK</code><br><small style="color:var(--muted)">2,620 ms</small></td>
+            <td><span class="score-pill score-high">86 / 100</span></td>
+            <td><span class="subscores">25 / 25 / 12 / 24</span></td>
+            <td>
+              <strong>85 / 100</strong><br>
+              <span class="ifs-tuple">(0.878, 0.082, 0.040)</span>
+            </td>
+            <td>8/8 Allowed<br><small style="color:var(--emerald)">✅ /llms.txt + full</small></td>
+            <td><strong>1 Block (5 types)</strong><br><small style="color:var(--muted)">Org, SoftwareApp, WebSite...</small></td>
+            <td>
+              <div class="action-links">
+                <a class="btn btn-primary" href="./resend.com/agency-audit-report.html">HTML Report</a>
+                <a class="btn" href="./resend.com/llms.txt">llms.txt</a>
+                <a class="btn" href="./resend.com/schema-jsonld.html">schema-jsonld.html</a>
+                <a class="btn" href="./resend.com/eeat-comparison-block.md">EEAT MD</a>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="rank-badge rank-3">#3</span></td>
+            <td>
+              <div class="brand-cell">
+                <span class="brand-name">Dub</span>
+                <a class="brand-domain" href="https://dub.co" target="_blank">dub.co · Dub Technologies</a>
+              </div>
+            </td>
+            <td><code>200 OK</code><br><small style="color:var(--muted)">1,602 ms</small></td>
+            <td><span class="score-pill score-high">85 / 100</span></td>
+            <td><span class="subscores">25 / 25 / 24 / 11</span></td>
+            <td>
+              <strong>85 / 100</strong><br>
+              <span class="ifs-tuple">(0.878, 0.082, 0.040)</span>
+            </td>
+            <td>8/8 Allowed<br><small style="color:var(--emerald)">✅ /llms.txt</small></td>
+            <td><strong>2 Blocks</strong><br><small style="color:var(--muted)">Organization, SoftwareApp</small></td>
+            <td>
+              <div class="action-links">
+                <a class="btn btn-primary" href="./dub.co/agency-audit-report.html">HTML Report</a>
+                <a class="btn" href="./dub.co/llms.txt">llms.txt</a>
+                <a class="btn" href="./dub.co/schema-jsonld.html">schema-jsonld.html</a>
+                <a class="btn" href="./dub.co/eeat-comparison-block.md">EEAT MD</a>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="rank-badge">#4</span></td>
+            <td>
+              <div class="brand-cell">
+                <span class="brand-name">Linear</span>
+                <a class="brand-domain" href="https://linear.app" target="_blank">linear.app · Linear Orbit Inc.</a>
+              </div>
+            </td>
+            <td><code>200 OK</code><br><small style="color:var(--muted)">164 ms</small></td>
+            <td><span class="score-pill score-mid">52 / 100</span></td>
+            <td><span class="subscores">25 / 25 / 0 / 2</span></td>
+            <td>
+              <strong>56 / 100</strong><br>
+              <span class="ifs-tuple">(0.653, 0.190, 0.157)</span>
+            </td>
+            <td>8/8 Allowed<br><small style="color:var(--emerald)">✅ /llms.txt</small></td>
+            <td><strong>0 Blocks</strong><br><small style="color:var(--amber)">Missing JSON-LD</small></td>
+            <td>
+              <div class="action-links">
+                <a class="btn btn-primary" href="./linear.app/agency-audit-report.html">HTML Report</a>
+                <a class="btn" href="./linear.app/llms.txt">llms.txt</a>
+                <a class="btn" href="./linear.app/schema-jsonld.html">schema-jsonld.html</a>
+                <a class="btn" href="./linear.app/eeat-comparison-block.md">EEAT MD</a>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="rank-badge">#4</span></td>
+            <td>
+              <div class="brand-cell">
+                <span class="brand-name">Cal.com</span>
+                <a class="brand-domain" href="https://cal.com" target="_blank">cal.com · Cal.com Inc.</a>
+              </div>
+            </td>
+            <td><code>200 OK</code><br><small style="color:var(--muted)">114 ms</small></td>
+            <td><span class="score-pill score-mid">52 / 100</span></td>
+            <td><span class="subscores">25 / 25 / 0 / 2</span></td>
+            <td>
+              <strong>56 / 100</strong><br>
+              <span class="ifs-tuple">(0.653, 0.190, 0.157)</span>
+            </td>
+            <td>8/8 Allowed<br><small style="color:var(--emerald)">✅ /llms.txt</small></td>
+            <td><strong>0 Blocks</strong><br><small style="color:var(--amber)">Missing JSON-LD</small></td>
+            <td>
+              <div class="action-links">
+                <a class="btn btn-primary" href="./cal.com/agency-audit-report.html">HTML Report</a>
+                <a class="btn" href="./cal.com/llms.txt">llms.txt</a>
+                <a class="btn" href="./cal.com/schema-jsonld.html">schema-jsonld.html</a>
+                <a class="btn" href="./cal.com/eeat-comparison-block.md">EEAT MD</a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-title">
+      <span>🛠️ Per-Site Diagnostic &amp; Engineering Fixer Pack</span>
+    </div>
+
+    <div class="cards-grid">
+      <div class="site-card">
+        <div>
+          <div class="site-card-header">
+            <div>
+              <div class="site-card-title">#1 Cursor (cursor.com)</div>
+              <div class="site-card-cat">AI Code Editor &amp; Developer IDE · vs GitHub Copilot, Windsurf, Claude Code</div>
+            </div>
+            <span class="score-pill score-high">95</span>
+          </div>
+          <div class="site-gap">
+            <strong>Diagnostic:</strong> Strongest overall performer (16.0 facts/1k words, 375 words, 15 H2s, 2 JSON-LD blocks). Missing explicit <code>SoftwareApplication</code> + <code>FAQPage</code> JSON-LD and <code>/llms-full.txt</code> to lock in 100/100.
+          </div>
+        </div>
+        <div class="action-links">
+          <a class="btn btn-primary" href="./cursor.com/agency-audit-report.html">White-Label Report</a>
+          <a class="btn" href="./cursor.com/llms.txt">llms.txt</a>
+          <a class="btn" href="./cursor.com/schema-jsonld.html">schema-jsonld.html</a>
+          <a class="btn" href="./cursor.com/robots-ai-patch.txt">robots-ai-patch.txt</a>
+          <a class="btn" href="./cursor.com/eeat-comparison-block.md">eeat-comparison-block.md</a>
+        </div>
+      </div>
+
+      <div class="site-card">
+        <div>
+          <div class="site-card-header">
+            <div>
+              <div class="site-card-title">#2 Resend (resend.com)</div>
+              <div class="site-card-cat">Email API for Developers · vs SendGrid, Postmark, AWS SES</div>
+            </div>
+            <span class="score-pill score-high">86</span>
+          </div>
+          <div class="site-gap">
+            <strong>Diagnostic:</strong> Highest E-E-A-T score (24/25, 28.2 facts/1k words across 496 words) and the only site with both <code>/llms.txt</code> &amp; <code>/llms-full.txt</code>. Lost 13 pts on Schema (12/25) due to single-block JSON-LD lacking <code>FAQPage</code>.
+          </div>
+        </div>
+        <div class="action-links">
+          <a class="btn btn-primary" href="./resend.com/agency-audit-report.html">White-Label Report</a>
+          <a class="btn" href="./resend.com/llms.txt">llms.txt</a>
+          <a class="btn" href="./resend.com/schema-jsonld.html">schema-jsonld.html</a>
+          <a class="btn" href="./resend.com/robots-ai-patch.txt">robots-ai-patch.txt</a>
+          <a class="btn" href="./resend.com/eeat-comparison-block.md">eeat-comparison-block.md</a>
+        </div>
+      </div>
+
+      <div class="site-card">
+        <div>
+          <div class="site-card-header">
+            <div>
+              <div class="site-card-title">#3 Dub (dub.co)</div>
+              <div class="site-card-cat">Modern Link Management &amp; Attribution · vs Bitly, Rebrandly, Short.io</div>
+            </div>
+            <span class="score-pill score-high">85</span>
+          </div>
+          <div class="site-gap">
+            <strong>Diagnostic:</strong> Great technical foundation (25/25 Bots, 25/25 llms.txt, 24/25 Schema with <code>Organization</code> &amp; <code>SoftwareApplication</code>). Lost 14 pts on E-E-A-T (11/25) with only 3.4 facts/1k words across 295 words.
+          </div>
+        </div>
+        <div class="action-links">
+          <a class="btn btn-primary" href="./dub.co/agency-audit-report.html">White-Label Report</a>
+          <a class="btn" href="./dub.co/llms.txt">llms.txt</a>
+          <a class="btn" href="./dub.co/schema-jsonld.html">schema-jsonld.html</a>
+          <a class="btn" href="./dub.co/robots-ai-patch.txt">robots-ai-patch.txt</a>
+          <a class="btn" href="./dub.co/eeat-comparison-block.md">eeat-comparison-block.md</a>
+        </div>
+      </div>
+
+      <div class="site-card">
+        <div>
+          <div class="site-card-header">
+            <div>
+              <div class="site-card-title">#4 Linear (linear.app)</div>
+              <div class="site-card-cat">Product Management &amp; Issue Tracking · vs Jira, Asana, Shortcut</div>
+            </div>
+            <span class="score-pill score-mid">52</span>
+          </div>
+          <div class="site-gap">
+            <strong>Diagnostic:</strong> Fast 164ms response with <code>/llms.txt</code> (25/25), but 0 Schema JSON-LD blocks (0/25) and only 31 extracted paragraph words (0.0 facts/1k, 2/25 E-E-A-T), causing elevated IFS hesitation (π = 0.190).
+          </div>
+        </div>
+        <div class="action-links">
+          <a class="btn btn-primary" href="./linear.app/agency-audit-report.html">White-Label Report</a>
+          <a class="btn" href="./linear.app/llms.txt">llms.txt</a>
+          <a class="btn" href="./linear.app/schema-jsonld.html">schema-jsonld.html</a>
+          <a class="btn" href="./linear.app/robots-ai-patch.txt">robots-ai-patch.txt</a>
+          <a class="btn" href="./linear.app/eeat-comparison-block.md">eeat-comparison-block.md</a>
+        </div>
+      </div>
+
+      <div class="site-card">
+        <div>
+          <div class="site-card-header">
+            <div>
+              <div class="site-card-title">#4 Cal.com (cal.com)</div>
+              <div class="site-card-cat">Open Source Scheduling Infrastructure · vs Calendly, SavvyCal, Chili Piper</div>
+            </div>
+            <span class="score-pill score-mid">52</span>
+          </div>
+          <div class="site-gap">
+            <strong>Diagnostic:</strong> Fastest HTTP latency (114ms) and live <code>/llms.txt</code> (25/25), but 0 Schema JSON-LD blocks (0/25) and 0 static <code>&lt;p&gt;/&lt;h1&gt;/&lt;h2&gt;</code> words extracted from initial HTML (2/25 E-E-A-T).
+          </div>
+        </div>
+        <div class="action-links">
+          <a class="btn btn-primary" href="./cal.com/agency-audit-report.html">White-Label Report</a>
+          <a class="btn" href="./cal.com/llms.txt">llms.txt</a>
+          <a class="btn" href="./cal.com/schema-jsonld.html">schema-jsonld.html</a>
+          <a class="btn" href="./cal.com/robots-ai-patch.txt">robots-ai-patch.txt</a>
+          <a class="btn" href="./cal.com/eeat-comparison-block.md">eeat-comparison-block.md</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Generated by <strong>GEO Radar Pro Benchmark Lab</strong> (<code>geo_engine.py</code>)</span>
+      <span>SQLite History DB: <code>cold_start_history.sqlite3</code> · Audit Timestamp: 2026-10-28 (UTC+8)</span>
+    </div>
+  </div>
+</body>
+</html>

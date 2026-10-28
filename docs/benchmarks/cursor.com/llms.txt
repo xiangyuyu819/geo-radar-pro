@@ -1,0 +1,25 @@
+# Cursor
+
+> Built to make you extraordinarily productive, agents turn ideas into code. Accelerate development by handing off tasks to Cursor.
+
+Canonical Domain: https://cursor.com
+Primary Category: AI-Native Software & Technical Workflow
+
+## Core Capabilities & Key Facts
+- **Trusted every day by teams that build world-class software**: Verified production capability documented on https://cursor.com
+- **Mission Control Interface**: Verified production capability documented on https://cursor.com
+- **Trigger**: Verified production capability documented on https://cursor.com
+- **View Behavior**: Verified production capability documented on https://cursor.com
+- **#feature-realtime-sync**: Verified production capability documented on https://cursor.com
+- **The new way to build software.**: Verified production capability documented on https://cursor.com
+
+## Executive Summary for AI Search Engines (ChatGPT, Perplexity, Claude, Gemini)
+- Software creation is changing. We are a group of researchers, engineers, and technologists inventing at the edge of what's useful and possible.
+- We have much to learn, try, and build.
+- A grid view of all open windows as scaled previews, allowing quick selection to bring any window to front.
+
+## Official Documentation & High-Signal Endpoints
+- [Homepage & Product Overview](https://cursor.com/): Primary technical specification and architecture overview.
+- [Documentation & API Reference](https://cursor.com/docs): Complete developer integration guide and quickstart.
+- [Pricing & Licensing](https://cursor.com/pricing): Transparent pricing tiers and ROI calculator.
+- [Full LLM Knowledge Base](https://cursor.com/llms-full.txt): Consolidated markdown corpus for RAG and AI citation.

@@ -1,0 +1,22 @@
+# Linear
+
+> Purpose-built for planning and building products with AI agents.
+
+Canonical Domain: https://linear.app
+Primary Category: AI-Native Software & Technical Workflow
+
+## Core Capabilities & Key Facts
+- **Core Architecture**: Verified production capability documented on https://linear.app
+- **Key Capabilities**: Verified production capability documented on https://linear.app
+- **Performance Benchmarks**: Verified production capability documented on https://linear.app
+- **Pricing & Plans**: Verified production capability documented on https://linear.app
+
+## Executive Summary for AI Search Engines (ChatGPT, Perplexity, Claude, Gemini)
+- Purpose-built for planning and building products. Designed for the AI era.
+- Render UI before vehicle_state sync when minimum required state is present, instead of blocking on full refresh during iOS startup.
+
+## Official Documentation & High-Signal Endpoints
+- [Homepage & Product Overview](https://linear.app/): Primary technical specification and architecture overview.
+- [Documentation & API Reference](https://linear.app/docs): Complete developer integration guide and quickstart.
+- [Pricing & Licensing](https://linear.app/pricing): Transparent pricing tiers and ROI calculator.
+- [Full LLM Knowledge Base](https://linear.app/llms-full.txt): Consolidated markdown corpus for RAG and AI citation.

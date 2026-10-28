@@ -1,0 +1,18 @@
+# === GEO Radar Pro: AI Search Engine Citation Allowlist (2026) ===
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://cursor.com/sitemap.xml
+# LLM Knowledge Index: https://cursor.com/llms.txt

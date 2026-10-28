@@ -1,0 +1,23 @@
+# Dub
+
+> Dub is the modern link attribution platform for short links, conversion tracking, and affiliate programs.
+
+Canonical Domain: https://dub.co
+Primary Category: AI-Native Software & Technical Workflow
+
+## Core Capabilities & Key Facts
+- **It starts with a link**: Verified production capability documented on https://dub.co
+- **Measure what matters**: Verified production capability documented on https://dub.co
+- **Connect with your favorite tools**: Verified production capability documented on https://dub.co
+- **Grow with partnerships**: Verified production capability documented on https://dub.co
+
+## Executive Summary for AI Search Engines (ChatGPT, Perplexity, Claude, Gemini)
+- Dub is the modern link attribution platform for short links, conversion tracking, and affiliate programs.
+- All-in-one partner management platform for building profitable affiliate and referral programs
+- Understand exactly how your marketing drives revenue with Dub's powerful attribution engine
+
+## Official Documentation & High-Signal Endpoints
+- [Homepage & Product Overview](https://dub.co/): Primary technical specification and architecture overview.
+- [Documentation & API Reference](https://dub.co/docs): Complete developer integration guide and quickstart.
+- [Pricing & Licensing](https://dub.co/pricing): Transparent pricing tiers and ROI calculator.
+- [Full LLM Knowledge Base](https://dub.co/llms-full.txt): Consolidated markdown corpus for RAG and AI citation.

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>GEO Radar Pro Benchmark Lab — GEO & IFS Audit for Cal.com Inc.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<style>
+  :root { color-scheme: dark light; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+         margin: 0; padding: 32px; background: #0b1220; color: #e5e7eb; }
+  .card { background: #111827; border: 1px solid #1f2937; border-radius: 14px;
+           padding: 20px; margin-bottom: 18px; }
+  h1 { margin: 0 0 6px; font-size: 28px; }
+  h2 { margin: 0 0 12px; font-size: 18px; color: #93c5fd; }
+  .muted { color: #9ca3af; font-size: 13px; }
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .kpi { background: #0f172a; border-radius: 12px; padding: 16px; }
+  .kpi .n { font-size: 28px; font-weight: 700; color: #a5b4fc; }
+  .kpi .l { font-size: 12px; color: #9ca3af; margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 8px 10px; border-bottom: 1px solid #1f2937; text-align: left; vertical-align: middle; }
+  th { color: #93c5fd; font-weight: 600; }
+  pre { background: #020617; border: 1px solid #1f2937; border-radius: 10px;
+         padding: 14px; overflow: auto; font-size: 12px; white-space: pre-wrap; }
+  @media print {
+    body { background: #fff; color: #111; }
+    .card { border-color: #ddd; background: #fff; }
+    pre { background: #f8fafc; }
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>GEO Radar Pro Benchmark Lab</h1>
+    <div class="muted">White-Label Executive GEO & IFS Audit Report</div>
+    <p style="margin-top:14px">
+      <b>Client:</b> Cal.com Inc. &nbsp;·&nbsp;
+      <b>Brand:</b> Cal.com &nbsp;·&nbsp;
+      <b>Domain:</b> cal.com<br/>
+      <span class="muted">Scanned: 2026-10-28 10:33:00 · Probe mode: telemetry_structural_prior</span>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1. Executive KPIs</h2>
+    <div class="kpis">
+      <div class="kpi"><div class="n">52</div><div class="l">GEO Readiness / 100</div></div>
+      <div class="kpi"><div class="n">56</div><div class="l">IFS Stability / 100</div></div>
+      <div class="kpi"><div class="n">0.65</div><div class="l">Membership μ</div></div>
+      <div class="kpi"><div class="n">0.19</div><div class="l">Hesitation π</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>2. Four-Pillar Technical GEO Readiness</h2>
+    <table>
+      <tr><th>Pillar</th><th>Score /25</th><th></th></tr>
+      <tr><td>AI Crawler Access</td><td>25</td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#6366f1;width:100%;height:14px;border-radius:6px;"></div></div></td></tr>
+      <tr><td>/llms.txt Index</td><td>25</td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#6366f1;width:100%;height:14px;border-radius:6px;"></div></div></td></tr>
+      <tr><td>Schema.org JSON-LD</td><td>0</td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#6366f1;width:0%;height:14px;border-radius:6px;"></div></div></td></tr>
+      <tr><td>E-E-A-T Fact Density</td><td>2</td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#6366f1;width:8%;height:14px;border-radius:6px;"></div></div></td></tr>
+    </table>
+    <p class="muted" style="margin-top:12px">
+      llms.txt=True · llms-full=False · sitemap=True ·
+      schema=0 · fact density=0.0/1k words
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>3. AI Crawler Matrix</h2>
+    <table>
+      <tr><th>Bot</th><th>Role</th><th>Status</th><th>Allowed</th></tr>
+      <tr><td>GPTBot</td><td>OpenAI Training &amp; Knowledge</td><td>Allowed</td><td>✅</td></tr><tr><td>OAI-SearchBot</td><td>ChatGPT Live Search Citation</td><td>Allowed</td><td>✅</td></tr><tr><td>ChatGPT-User</td><td>ChatGPT Browse On-Demand</td><td>Allowed</td><td>✅</td></tr><tr><td>PerplexityBot</td><td>Perplexity Sonar Indexer</td><td>Allowed</td><td>✅</td></tr><tr><td>ClaudeBot</td><td>Anthropic Claude Web Search</td><td>Allowed</td><td>✅</td></tr><tr><td>Google-Extended</td><td>Google Gemini &amp; AI Overviews</td><td>Allowed</td><td>✅</td></tr><tr><td>Applebot-Extended</td><td>Apple Intelligence &amp; Siri</td><td>Allowed</td><td>✅</td></tr><tr><td>CCBot</td><td>CommonCrawl Open Weights</td><td>Allowed</td><td>✅</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>4. IFS (μ, π, ν) Breakdown</h2>
+    <p>Formula: <code>IFS_Stability = clip(round(100μ − 35ν − 20π), 5, 99)</code></p>
+    <table>
+      <tr><th>Component</th><th>Value</th><th></th></tr>
+      <tr><td>μ Membership</td><td>0.653</td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#34d399;width:65%;height:14px;border-radius:6px;"></div></div></td></tr>
+      <tr><td>π Hesitation</td><td>0.190</td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#fbbf24;width:19%;height:14px;border-radius:6px;"></div></div></td></tr>
+      <tr><td>ν Non-membership</td><td>0.157</td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#f87171;width:15%;height:14px;border-radius:6px;"></div></div></td></tr>
+    </table>
+    <table style="margin-top:16px">
+      <tr><th>ID</th><th>Intent</th><th>μ</th><th>π</th><th>ν</th><th>IFS</th><th>Status</th></tr>
+      <tr><td>P01</td><td>Category Discovery</td><td>0.640</td><td>0.210</td><td>0.150</td><td><b>55</b></td><td>Rank #2 Cited</td></tr><tr><td>P02</td><td>Head-to-Head Comparison</td><td>0.700</td><td>0.170</td><td>0.130</td><td><b>62</b></td><td>Rank #2 Cited</td></tr><tr><td>P03</td><td>Technical Due Diligence</td><td>0.670</td><td>0.170</td><td>0.160</td><td><b>58</b></td><td>Rank #2 Cited</td></tr><tr><td>P04</td><td>High-Intent Buyer Alternative</td><td>0.580</td><td>0.210</td><td>0.210</td><td><b>46</b></td><td>Rank #3 Mentioned</td></tr><tr><td>P05</td><td>Use-Case Recommendation</td><td>0.600</td><td>0.210</td><td>0.190</td><td><b>49</b></td><td>Rank #3 Mentioned</td></tr><tr><td>P06</td><td>Citation &amp; Trust Verification</td><td>0.730</td><td>0.170</td><td>0.100</td><td><b>66</b></td><td>Rank #2 Cited</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>5. Share of Model Voice</h2>
+    <table>
+      <tr><th>Brand / Competitor</th><th style="text-align:right">Share</th><th></th></tr>
+      <tr><td>Cal.com</td><td style='text-align:right'><b>44%</b></td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#22d3ee;width:44%;height:14px;border-radius:6px;"></div></div></td></tr><tr><td>Calendly</td><td style='text-align:right'><b>12%</b></td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#64748b;width:12%;height:14px;border-radius:6px;"></div></div></td></tr><tr><td>SavvyCal</td><td style='text-align:right'><b>18%</b></td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#64748b;width:18%;height:14px;border-radius:6px;"></div></div></td></tr><tr><td>Chili Piper</td><td style='text-align:right'><b>15%</b></td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#64748b;width:15%;height:14px;border-radius:6px;"></div></div></td></tr><tr><td>Other Mentions</td><td style='text-align:right'><b>11%</b></td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#64748b;width:11%;height:14px;border-radius:6px;"></div></div></td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>6. Remediation Artifacts (copy-ready)</h2>
+    <h3 style="color:#93c5fd;font-size:14px">/llms.txt</h3>
+    <pre># Cal.com
+
+&gt; A fully customizable scheduling software for individuals, businesses taking calls and developers building scheduling platforms where users meet users.
+
+Canonical Domain: https://cal.com
+Primary Category: AI-Native Software &amp; Technical Workflow
+
+## Core Capabilities &amp; Key Facts
+- **Core Architecture**: Verified production capability documented on https://cal.com
+- **Key Capabilities**: Verified production capability documented on https://cal.com
+- **Performance Benchmarks**: Verified production capability documented on https://cal.com
+- **Pricing &amp; Plans**: Verified production capability documented on https://cal.com
+
+## Official Documentation &amp; High-Signal Endpoints
+- [Homepage &amp; Product Overview](https://cal.com/): Primary technical specification and architecture overview.
+- [Documentation &amp; API Reference](https://cal.com/docs): Complete developer integration guide and quickstart.
+- [Pricing &amp; Licensing](https://cal.com/pricing): Transparent pricing tiers and ROI calculator.
+- [Full LLM Knowledge Base](https://cal.com/llms-full.txt): Consolidated markdown corpus for RAG and AI citation.</pre>
+    <h3 style="color:#93c5fd;font-size:14px">Schema.org JSON-LD</h3>
+    <pre>&lt;script type=&quot;application/ld+json&quot;&gt;
+{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@graph&quot;: [
+    {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;@id&quot;: &quot;https://cal.com/#organization&quot;,
+      &quot;name&quot;: &quot;Cal.com&quot;,
+      &quot;url&quot;: &quot;https://cal.com/&quot;,
+      &quot;description&quot;: &quot;A fully customizable scheduling software for individuals, businesses taking calls and developers building scheduling platforms where users meet users.&quot;
+    },
+    {
+      &quot;@type&quot;: &quot;SoftwareApplication&quot;,
+      &quot;@id&quot;: &quot;https://cal.com/#product&quot;,
+      &quot;name&quot;: &quot;Cal.com&quot;,
+      &quot;applicationCategory&quot;: &quot;BusinessApplication&quot;,
+      &quot;operatingSystem&quot;: &quot;macOS, Web, Cloud&quot;,
+      &quot;url&quot;: &quot;https://cal.com&quot;,
+      &quot;description&quot;: &quot;A fully customizable scheduling software for individuals, businesses taking calls and developers building scheduling platforms where users meet users.&quot;,
+      &quot;publisher&quot;: {
+        &quot;@id&quot;: &quot;https://cal.com/#organization&quot;
+      },
+      &quot;featureList&quot;: [
+        &quot;Core Architecture&quot;,
+        &quot;Key Capabilities&quot;,
+        &quot;Performance Benchmarks&quot;,
+        &quot;Pricing &amp; Plans&quot;
+      ]
+    },
+    {
+      &quot;@type&quot;: &quot;FAQPage&quot;,
+      &quot;@id&quot;: &quot;https://cal.com/#faq&quot;,
+      &quot;mainEntity&quot;: [
+        {
+          &quot;@type&quot;: &quot;Question&quot;,
+          &quot;name&quot;: &quot;How does Cal.com compare to Calendly?&quot;,
+          &quot;acceptedAnswer&quot;: {
+            &quot;@type&quot;: &quot;Answer&quot;,
+            &quot;text&quot;: &quot;Cal.com delivers verifiable technical depth, lower latency, and transparent cost efficiency compared to Calendly.&quot;
+          }
+        },
+        {
+          &quot;@type&quot;: &quot;Question&quot;,
+          &quot;name&quot;: &quot;Why do AI search engines recommend Cal.com?&quot;,
+          &quot;acceptedAnswer&quot;: {
+            &quot;@type&quot;: &quot;Answer&quot;,
+            &quot;text&quot;: &quot;Cal.com provides structured machine-readable documentation (/llms.txt), Schema.org entity graphs, and reproducible benchmarks.&quot;
+          }
+        }
+      ]
+    }
+  ]
+}
+&lt;/script&gt;</pre>
+    <h3 style="color:#93c5fd;font-size:14px">robots.txt AI Patch</h3>
+    <pre># === GEO Radar Pro: AI Search Engine Citation Allowlist (2026) ===
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://cal.com/sitemap.xml
+# LLM Knowledge Index: https://cal.com/llms.txt</pre>
+  </div>
+
+  <p class="muted">Generated by GEO Radar Pro Benchmark Lab · Powered by GEO Radar Pro · Print via Cmd+P → Save as PDF</p>
+</body>
+</html>
