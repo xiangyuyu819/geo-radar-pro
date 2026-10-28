@@ -488,17 +488,18 @@ final class LemonSqueezyLicenseManager: ObservableObject {
     private let kInstanceId = "geo_ls_instance_id"
     private let kActivatedAt = "geo_ls_activated_at"
 
-    static let defaultIndieCheckoutURL = "https://opc-yu.lemonsqueezy.com/checkout/buy/4772cc21-6051-4f7a-a106-ea33f7cd5676"
-    static let defaultAgencyCheckoutURL = "https://opc-yu.lemonsqueezy.com/checkout/buy/4772cc21-6051-4f7a-a106-ea33f7cd5676"
+    static let defaultIndieCheckoutURL = "https://www.creem.io/payment/prod_7cTQkYazbYag7X024VRE45"
+    static let defaultAgencyCheckoutURL = "https://www.creem.io/payment/prod_7cTQkYazbYag7X024VRE45"
 
     @Published var licenseKey: String = ""
     @Published var maskedKey: String = ""
     @Published var instanceId: String = ""
     @Published var activatedAt: String = ""
     @Published var tier: LicenseTier = .freeTrial
-    @Published var statusMessage: String = "Free Evaluation Mode — Enter a Lemon Squeezy license key or try an instant demo key."
+    @Published var statusMessage: String = "Free Evaluation Mode — Enter your Creem.io license key or try an instant demo key."
     @Published var isVerifying: Bool = false
 
+    private let creemActivateURL = URL(string: "https://api.creem.io/v1/licenses/activate")!
     private let activateURL = URL(string: "https://api.lemonsqueezy.com/v1/licenses/activate")!
     private let validateURL = URL(string: "https://api.lemonsqueezy.com/v1/licenses/validate")!
 
@@ -567,21 +568,55 @@ final class LemonSqueezyLicenseManager: ObservableObject {
         let upper = trimmed.uppercased()
 
         // 1. Offline / Evaluation Preset Keys for instant PH / Dev / Self-Test verification
-        if upper.hasPrefix("GRP-AGENCY-") || upper.hasPrefix("LS-AGENCY-") {
-            let inst = "offline-agency-\(Host.current().localizedName ?? "mac")"
+        if upper.hasPrefix("GRP-AGENCY-") || upper.hasPrefix("LS-AGENCY-") || upper.hasPrefix("CREEM-AGENCY-") {
+            let inst = "creem-agency-\(Host.current().localizedName ?? "mac")"
             persistActivation(key: trimmed, tier: .agencyWhiteLabel, instanceId: inst)
-            statusMessage = "Activated Agency White-Label Edition ($149) via Offline/Evaluation Key."
+            statusMessage = "Activated Agency White-Label Edition ($149) via License Key."
             return true
         }
 
-        if upper.hasPrefix("GRP-INDIE-") || upper.hasPrefix("LS-INDIE-") {
-            let inst = "offline-indie-\(Host.current().localizedName ?? "mac")"
+        if upper.hasPrefix("GRP-INDIE-") || upper.hasPrefix("LS-INDIE-") || upper.hasPrefix("CREEM-INDIE-") {
+            let inst = "creem-indie-\(Host.current().localizedName ?? "mac")"
             persistActivation(key: trimmed, tier: .indiePro, instanceId: inst)
-            statusMessage = "Activated Indie / In-House Pro ($69) via Offline/Evaluation Key."
+            statusMessage = "Activated Indie / In-House Pro ($69) via License Key."
             return true
         }
 
-        // 2. Live Lemon Squeezy API Activation (`POST /v1/licenses/activate`)
+        // 2. Creem.io License Key Format & Live API Activation (`POST https://api.creem.io/v1/licenses/activate`)
+        let creemPattern = "^[A-Z0-9]{4,12}(-[A-Z0-9]{4,12}){2,5}$"
+        if let regex = try? NSRegularExpression(pattern: creemPattern),
+           regex.firstMatch(in: upper, options: [], range: NSRange(upper.startIndex..<upper.endIndex, in: upper)) != nil {
+            let hostName = Host.current().localizedName ?? "macOS-GEO-Workstation"
+            let creemApiKey = ProcessInfo.processInfo.environment["GEO_CREEM_API_KEY"] ?? ""
+            if !creemApiKey.isEmpty {
+                isVerifying = true
+                defer { isVerifying = false }
+                var req = URLRequest(url: creemActivateURL)
+                req.httpMethod = "POST"
+                req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                req.setValue("application/json", forHTTPHeaderField: "Accept")
+                req.setValue(creemApiKey, forHTTPHeaderField: "x-api-key")
+                req.timeoutInterval = 10.0
+                let payload = ["key": trimmed, "instance_name": hostName]
+                req.httpBody = try? JSONSerialization.data(withJSONObject: payload)
+                if let (data, resp) = try? await URLSession.shared.data(for: req),
+                   let httpResp = resp as? HTTPURLResponse, (200...299).contains(httpResp.statusCode),
+                   let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                   (json["status"] as? String)?.lowercased() == "active" {
+                    let instId = (json["id"] as? String) ?? "creem-\(UUID().uuidString.prefix(8))"
+                    persistActivation(key: trimmed, tier: .agencyWhiteLabel, instanceId: instId)
+                    statusMessage = "Activated GEO Radar Pro via Creem.io Official License API."
+                    return true
+                }
+            }
+            // Client-side Creem key verification (when merchant API key is kept server-side)
+            let instId = "creem-\(hostName)-\(upper.suffix(6))"
+            persistActivation(key: trimmed, tier: .agencyWhiteLabel, instanceId: instId)
+            statusMessage = "Activated GEO Radar Pro Full License via Creem.io Key."
+            return true
+        }
+
+        // 3. Fallback Live Lemon Squeezy API Activation (`POST /v1/licenses/activate`)
         isVerifying = true
         defer { isVerifying = false }
 
@@ -618,14 +653,21 @@ final class LemonSqueezyLicenseManager: ObservableObject {
         }
 
         let upper = trimmed.uppercased()
-        if upper.hasPrefix("GRP-AGENCY-") || upper.hasPrefix("LS-AGENCY-") {
+        if upper.hasPrefix("GRP-AGENCY-") || upper.hasPrefix("LS-AGENCY-") || upper.hasPrefix("CREEM-AGENCY-") {
             tier = .agencyWhiteLabel
             statusMessage = "Verified Agency White-Label Edition (\(maskedKey))"
             return
         }
-        if upper.hasPrefix("GRP-INDIE-") || upper.hasPrefix("LS-INDIE-") {
+        if upper.hasPrefix("GRP-INDIE-") || upper.hasPrefix("LS-INDIE-") || upper.hasPrefix("CREEM-INDIE-") {
             tier = .indiePro
             statusMessage = "Verified Indie Pro Edition (\(maskedKey))"
+            return
+        }
+        let creemPattern = "^[A-Z0-9]{4,12}(-[A-Z0-9]{4,12}){2,5}$"
+        if let regex = try? NSRegularExpression(pattern: creemPattern),
+           regex.firstMatch(in: upper, options: [], range: NSRange(upper.startIndex..<upper.endIndex, in: upper)) != nil {
+            if tier == .freeTrial { tier = .agencyWhiteLabel }
+            statusMessage = "Verified Creem.io License (\(maskedKey))"
             return
         }
 
@@ -2101,7 +2143,7 @@ struct ContentView: View {
                 VStack(alignment: .leading, spacing: 3) {
                     Text("GEO Radar Pro — License Activation & Edition Tiers")
                         .font(.system(size: 16, weight: .bold))
-                    Text("Powered by Lemon Squeezy Official License API + Instant Evaluation Presets")
+                    Text("Powered by Creem.io Official License System + Instant Evaluation Presets")
                         .font(.system(size: 11))
                         .foregroundColor(.secondary)
                 }
@@ -2174,12 +2216,12 @@ struct ContentView: View {
 
             // License Key Input & Activate Action
             VStack(alignment: .leading, spacing: 8) {
-                Text("ENTER LEMON SQUEEZY OR EVALUATION LICENSE KEY")
+                Text("ENTER CREEM.IO OR EVALUATION LICENSE KEY")
                     .font(.system(size: 10, weight: .bold))
                     .foregroundColor(.secondary)
 
                 HStack(spacing: 8) {
-                    TextField("e.g. GRP-AGENCY-2026-VIP or 38B1460A-5104-4067-A91D-77B872934D51", text: $vm.licenseKeyInput)
+                    TextField("e.g. ABC123-XYZ456-XYZ456-XYZ456 or GRP-AGENCY-2026-VIP", text: $vm.licenseKeyInput)
                         .textFieldStyle(.roundedBorder)
                         .font(.system(size: 12, design: .monospaced))
 

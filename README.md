@@ -6,7 +6,7 @@
 [![Swift](https://img.shields.io/badge/Swift-6.0_Strict_Concurrency-F05138?style=flat-square&logo=swift)](https://swift.org)
 [![Python Engine](https://img.shields.io/badge/Engine-Python_3_Stdlib_(Zero_Deps)-3776AB?style=flat-square&logo=python)](https://www.python.org)
 [![BYOK](https://img.shields.io/badge/AI_Probing-BYOK_(OpenAI_%7C_Perplexity_%7C_DeepSeek_%7C_OpenRouter)-10A37F?style=flat-square)](#why-geo-radar-pro)
-[![Pricing](https://img.shields.io/badge/License-One--Time_Purchase_($69_%2F_$149)-FFC233?style=flat-square)](#)
+[![Pricing](https://img.shields.io/badge/License-One--Time_Purchase_($69_%2F_$149)-FFC233?style=flat-square)](https://www.creem.io/payment/prod_7cTQkYazbYag7X024VRE45)
 
 > **Stop paying $300–$500/month for cloud GEO dashboards that only watch your brand lose AI citations.**  
 > **GEO Radar Pro** is a native macOS engineering workbench that audits your live site from your residential IP, quantifies multi-temperature LLM citation stability using **Intuitionistic Fuzzy Sets $(\mu, \pi, \nu)$**, and generates production-ready `llms.txt`, `Schema.org JSON-LD`, `robots.txt` AI bot patches, and White-Label Agency HTML/Markdown reports in one click.
