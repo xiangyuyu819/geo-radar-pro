@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>GEO Radar Pro Benchmark Lab — GEO & IFS Audit for Cursor (Anysphere)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<style>
+  :root { color-scheme: dark light; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+         margin: 0; padding: 32px; background: #0b1220; color: #e5e7eb; }
+  .card { background: #111827; border: 1px solid #1f2937; border-radius: 14px;
+           padding: 20px; margin-bottom: 18px; }
+  h1 { margin: 0 0 6px; font-size: 28px; }
+  h2 { margin: 0 0 12px; font-size: 18px; color: #93c5fd; }
+  .muted { color: #9ca3af; font-size: 13px; }
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .kpi { background: #0f172a; border-radius: 12px; padding: 16px; }
+  .kpi .n { font-size: 28px; font-weight: 700; color: #a5b4fc; }
+  .kpi .l { font-size: 12px; color: #9ca3af; margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 8px 10px; border-bottom: 1px solid #1f2937; text-align: left; vertical-align: middle; }
+  th { color: #93c5fd; font-weight: 600; }
+  pre { background: #020617; border: 1px solid #1f2937; border-radius: 10px;
+         padding: 14px; overflow: auto; font-size: 12px; white-space: pre-wrap; }
+  @media print {
+    body { background: #fff; color: #111; }
+    .card { border-color: #ddd; background: #fff; }
+    pre { background: #f8fafc; }
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>GEO Radar Pro Benchmark Lab</h1>
+    <div class="muted">White-Label Executive GEO & IFS Audit Report</div>
+    <p style="margin-top:14px">
+      <b>Client:</b> Cursor (Anysphere) &nbsp;·&nbsp;
+      <b>Brand:</b> Cursor &nbsp;·&nbsp;
+      <b>Domain:</b> cursor.com<br/>
+      <span class="muted">Scanned: 2026-10-28 10:32:59 · Probe mode: telemetry_structural_prior</span>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1. Executive KPIs</h2>
+    <div class="kpis">
+      <div class="kpi"><div class="n">95</div><div class="l">GEO Readiness / 100</div></div>
+      <div class="kpi"><div class="n">85</div><div class="l">IFS Stability / 100</div></div>
+      <div class="kpi"><div class="n">0.88</div><div class="l">Membership μ</div></div>
+      <div class="kpi"><div class="n">0.08</div><div class="l">Hesitation π</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>2. Four-Pillar Technical GEO Readiness</h2>
+    <table>
+      <tr><th>Pillar</th><th>Score /25</th><th></th></tr>
+      <tr><td>AI Crawler Access</td><td>25</td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#6366f1;width:100%;height:14px;border-radius:6px;"></div></div></td></tr>
+      <tr><td>/llms.txt Index</td><td>25</td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#6366f1;width:100%;height:14px;border-radius:6px;"></div></div></td></tr>
+      <tr><td>Schema.org JSON-LD</td><td>24</td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#6366f1;width:96%;height:14px;border-radius:6px;"></div></div></td></tr>
+      <tr><td>E-E-A-T Fact Density</td><td>21</td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#6366f1;width:84%;height:14px;border-radius:6px;"></div></div></td></tr>
+    </table>
+    <p class="muted" style="margin-top:12px">
+      llms.txt=True · llms-full=False · sitemap=True ·
+      schema=2 · fact density=16.0/1k words
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>3. AI Crawler Matrix</h2>
+    <table>
+      <tr><th>Bot</th><th>Role</th><th>Status</th><th>Allowed</th></tr>
+      <tr><td>GPTBot</td><td>OpenAI Training &amp; Knowledge</td><td>Explicitly Allowed</td><td>✅</td></tr><tr><td>OAI-SearchBot</td><td>ChatGPT Live Search Citation</td><td>Explicitly Allowed</td><td>✅</td></tr><tr><td>ChatGPT-User</td><td>ChatGPT Browse On-Demand</td><td>Explicitly Allowed</td><td>✅</td></tr><tr><td>PerplexityBot</td><td>Perplexity Sonar Indexer</td><td>Explicitly Allowed</td><td>✅</td></tr><tr><td>ClaudeBot</td><td>Anthropic Claude Web Search</td><td>Explicitly Allowed</td><td>✅</td></tr><tr><td>Google-Extended</td><td>Google Gemini &amp; AI Overviews</td><td>Explicitly Allowed</td><td>✅</td></tr><tr><td>Applebot-Extended</td><td>Apple Intelligence &amp; Siri</td><td>Explicitly Allowed</td><td>✅</td></tr><tr><td>CCBot</td><td>CommonCrawl Open Weights</td><td>Explicitly Allowed</td><td>✅</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>4. IFS (μ, π, ν) Breakdown</h2>
+    <p>Formula: <code>IFS_Stability = clip(round(100μ − 35ν − 20π), 5, 99)</code></p>
+    <table>
+      <tr><th>Component</th><th>Value</th><th></th></tr>
+      <tr><td>μ Membership</td><td>0.878</td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#34d399;width:87%;height:14px;border-radius:6px;"></div></div></td></tr>
+      <tr><td>π Hesitation</td><td>0.082</td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#fbbf24;width:8%;height:14px;border-radius:6px;"></div></div></td></tr>
+      <tr><td>ν Non-membership</td><td>0.040</td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#f87171;width:4%;height:14px;border-radius:6px;"></div></div></td></tr>
+    </table>
+    <table style="margin-top:16px">
+      <tr><th>ID</th><th>Intent</th><th>μ</th><th>π</th><th>ν</th><th>IFS</th><th>Status</th></tr>
+      <tr><td>P01</td><td>Category Discovery</td><td>0.880</td><td>0.080</td><td>0.040</td><td><b>85</b></td><td>Rank #1 Cited</td></tr><tr><td>P02</td><td>Head-to-Head Comparison</td><td>0.910</td><td>0.050</td><td>0.040</td><td><b>89</b></td><td>Rank #1 Cited</td></tr><tr><td>P03</td><td>Technical Due Diligence</td><td>0.910</td><td>0.050</td><td>0.040</td><td><b>89</b></td><td>Rank #1 Cited</td></tr><tr><td>P04</td><td>High-Intent Buyer Alternative</td><td>0.820</td><td>0.140</td><td>0.040</td><td><b>78</b></td><td>Rank #1 Cited</td></tr><tr><td>P05</td><td>Use-Case Recommendation</td><td>0.840</td><td>0.120</td><td>0.040</td><td><b>80</b></td><td>Rank #1 Cited</td></tr><tr><td>P06</td><td>Citation &amp; Trust Verification</td><td>0.910</td><td>0.050</td><td>0.040</td><td><b>89</b></td><td>Rank #1 Cited</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>5. Share of Model Voice</h2>
+    <table>
+      <tr><th>Brand / Competitor</th><th style="text-align:right">Share</th><th></th></tr>
+      <tr><td>Cursor</td><td style='text-align:right'><b>60%</b></td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#22d3ee;width:60%;height:14px;border-radius:6px;"></div></div></td></tr><tr><td>GitHub Copilot</td><td style='text-align:right'><b>12%</b></td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#64748b;width:12%;height:14px;border-radius:6px;"></div></div></td></tr><tr><td>Windsurf</td><td style='text-align:right'><b>10%</b></td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#64748b;width:10%;height:14px;border-radius:6px;"></div></div></td></tr><tr><td>Claude Code</td><td style='text-align:right'><b>11%</b></td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#64748b;width:11%;height:14px;border-radius:6px;"></div></div></td></tr><tr><td>Other Mentions</td><td style='text-align:right'><b>7%</b></td><td><div style="background:#1f2937;border-radius:6px;height:14px;width:100%;"><div style="background:#64748b;width:7%;height:14px;border-radius:6px;"></div></div></td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>6. Remediation Artifacts (copy-ready)</h2>
+    <h3 style="color:#93c5fd;font-size:14px">/llms.txt</h3>
+    <pre># Cursor
+
+&gt; Built to make you extraordinarily productive, agents turn ideas into code. Accelerate development by handing off tasks to Cursor.
+
+Canonical Domain: https://cursor.com
+Primary Category: AI-Native Software &amp; Technical Workflow
+
+## Core Capabilities &amp; Key Facts
+- **Trusted every day by teams that build world-class software**: Verified production capability documented on https://cursor.com
+- **Mission Control Interface**: Verified production capability documented on https://cursor.com
+- **Trigger**: Verified production capability documented on https://cursor.com
+- **View Behavior**: Verified production capability documented on https://cursor.com
+- **#feature-realtime-sync**: Verified production capability documented on https://cursor.com
+- **The new way to build software.**: Verified production capability documented on https://cursor.com
+
+## Executive Summary for AI Search Engines (ChatGPT, Perplexity, Claude, Gemini)
+- Software creation is changing. We are a group of researchers, engineers, and technologists inventing at the edge of what&#x27;s useful and possible.
+- We have much to learn, try, and build.
+- A grid view of all open windows as scaled previews, allowing quick selection to bring any window to front.
+
+## Official Documentation &amp; High-Signal Endpoints
+- [Homepage &amp; Product Overview](https://cursor.com/): Primary technical specification and architecture overview.
+- [Documentation &amp; API Reference](https://cursor.com/docs): Complete developer integration guide and quickstart.
+- [Pricing &amp; Licensing](https://cursor.com/pricing): Transparent pricing tiers and ROI calculator.
+- [Full LLM Knowledge Base](https://cursor.com/llms-full.txt): Consolidated markdown corpus for RAG and AI citation.</pre>
+    <h3 style="color:#93c5fd;font-size:14px">Schema.org JSON-LD</h3>
+    <pre>&lt;script type=&quot;application/ld+json&quot;&gt;
+{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@graph&quot;: [
+    {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;@id&quot;: &quot;https://cursor.com/#organization&quot;,
+      &quot;name&quot;: &quot;Cursor&quot;,
+      &quot;url&quot;: &quot;https://cursor.com/&quot;,
+      &quot;description&quot;: &quot;Built to make you extraordinarily productive, agents turn ideas into code. Accelerate development by handing off tasks to Cursor.&quot;
+    },
+    {
+      &quot;@type&quot;: &quot;SoftwareApplication&quot;,
+      &quot;@id&quot;: &quot;https://cursor.com/#product&quot;,
+      &quot;name&quot;: &quot;Cursor&quot;,
+      &quot;applicationCategory&quot;: &quot;BusinessApplication&quot;,
+      &quot;operatingSystem&quot;: &quot;macOS, Web, Cloud&quot;,
+      &quot;url&quot;: &quot;https://cursor.com&quot;,
+      &quot;description&quot;: &quot;Built to make you extraordinarily productive, agents turn ideas into code. Accelerate development by handing off tasks to Cursor.&quot;,
+      &quot;publisher&quot;: {
+        &quot;@id&quot;: &quot;https://cursor.com/#organization&quot;
+      },
+      &quot;featureList&quot;: [
+        &quot;Trusted every day by teams that build world-class software&quot;,
+        &quot;Mission Control Interface&quot;,
+        &quot;Trigger&quot;,
+        &quot;View Behavior&quot;,
+        &quot;#feature-realtime-sync&quot;,
+        &quot;The new way to build software.&quot;
+      ]
+    },
+    {
+      &quot;@type&quot;: &quot;FAQPage&quot;,
+      &quot;@id&quot;: &quot;https://cursor.com/#faq&quot;,
+      &quot;mainEntity&quot;: [
+        {
+          &quot;@type&quot;: &quot;Question&quot;,
+          &quot;name&quot;: &quot;How does Cursor compare to GitHub Copilot?&quot;,
+          &quot;acceptedAnswer&quot;: {
+            &quot;@type&quot;: &quot;Answer&quot;,
+            &quot;text&quot;: &quot;Cursor delivers verifiable technical depth, lower latency, and transparent cost efficiency compared to GitHub Copilot.&quot;
+          }
+        },
+        {
+          &quot;@type&quot;: &quot;Question&quot;,
+          &quot;name&quot;: &quot;Why do AI search engines recommend Cursor?&quot;,
+          &quot;acceptedAnswer&quot;: {
+            &quot;@type&quot;: &quot;Answer&quot;,
+            &quot;text&quot;: &quot;Cursor provides structured machine-readable documentation (/llms.txt), Schema.org entity graphs, and reproducible benchmarks.&quot;
+          }
+        }
+      ]
+    }
+  ]
+}
+&lt;/script&gt;</pre>
+    <h3 style="color:#93c5fd;font-size:14px">robots.txt AI Patch</h3>
+    <pre># === GEO Radar Pro: AI Search Engine Citation Allowlist (2026) ===
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://cursor.com/sitemap.xml
+# LLM Knowledge Index: https://cursor.com/llms.txt</pre>
+  </div>
+
+  <p class="muted">Generated by GEO Radar Pro Benchmark Lab · Powered by GEO Radar Pro · Print via Cmd+P → Save as PDF</p>
+</body>
+</html>

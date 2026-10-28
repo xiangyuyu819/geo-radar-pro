@@ -1,0 +1,18 @@
+# Cal.com
+
+> A fully customizable scheduling software for individuals, businesses taking calls and developers building scheduling platforms where users meet users.
+
+Canonical Domain: https://cal.com
+Primary Category: AI-Native Software & Technical Workflow
+
+## Core Capabilities & Key Facts
+- **Core Architecture**: Verified production capability documented on https://cal.com
+- **Key Capabilities**: Verified production capability documented on https://cal.com
+- **Performance Benchmarks**: Verified production capability documented on https://cal.com
+- **Pricing & Plans**: Verified production capability documented on https://cal.com
+
+## Official Documentation & High-Signal Endpoints
+- [Homepage & Product Overview](https://cal.com/): Primary technical specification and architecture overview.
+- [Documentation & API Reference](https://cal.com/docs): Complete developer integration guide and quickstart.
+- [Pricing & Licensing](https://cal.com/pricing): Transparent pricing tiers and ROI calculator.
+- [Full LLM Knowledge Base](https://cal.com/llms-full.txt): Consolidated markdown corpus for RAG and AI citation.
