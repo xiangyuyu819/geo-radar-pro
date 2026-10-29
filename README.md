@@ -101,6 +101,22 @@ Instead of leaving you with a red chart, GEO Radar Pro synthesizes your live DOM
 
 ---
 
+
+## Download & Installation (macOS)
+
+Grab the latest evaluation build from **[GitHub Releases v1.0.0](https://github.com/xiangyuyu819/geo-radar-pro/releases/tag/v1.0.0)** (`GEORadarPro-v1.0.0-macOS.dmg`).
+
+### First launch on macOS (Gatekeeper)
+
+Because this build is distributed via GitHub (**ad-hoc signed**; Apple notarization coming after first sales), on first open macOS may say the developer cannot be verified. This is normal for indie Mac tools:
+
+1. In Finder, **right-click** `GEORadarPro.app` → **Open** → click **Open** again, **or**
+2. In Terminal: `xattr -cr /Applications/GEORadarPro.app` then open normally.
+
+After the first approval, it opens like any other Mac app.
+
+---
+
 ## Quick Start (Zero Xcode Required — Pure SwiftPM 6.0 + Python 3 Stdlib)
 
 GEO Radar Pro is engineered for zero dependency bloat:

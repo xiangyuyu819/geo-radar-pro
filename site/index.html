@@ -268,6 +268,66 @@
       gap: 6px;
     }
 
+
+    .gatekeeper-callout {
+      max-width: 720px;
+      margin: 0 auto 28px;
+      text-align: left;
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      box-shadow: 0 0 24px rgba(245, 158, 11, 0.08);
+    }
+
+    .gatekeeper-callout h3 {
+      margin: 0 0 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FDE68A;
+      letter-spacing: -0.01em;
+    }
+
+    .gatekeeper-callout p {
+      margin: 0 0 10px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .gatekeeper-callout ol {
+      margin: 0 0 8px;
+      padding-left: 1.2rem;
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+
+    .gatekeeper-callout li {
+      margin-bottom: 6px;
+    }
+
+    .gatekeeper-callout code {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      background: rgba(15, 23, 42, 0.7);
+      color: #FDE68A;
+      padding: 2px 6px;
+      border-radius: 5px;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+    }
+
+    .gatekeeper-callout .gk-note {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .gatekeeper-callout.pricing-gk {
+      max-width: 920px;
+      margin: 28px auto 0;
+    }
+
     /* Interactive Simulator Card */
     .simulator-shell {
       background: linear-gradient(180deg, rgba(17, 24, 39, 0.92) 0%, rgba(11, 15, 25, 0.96) 100%);
@@ -859,6 +919,17 @@
         </a>
       </div>
 
+
+      <aside class="gatekeeper-callout" aria-label="macOS Gatekeeper first-launch guide">
+        <h3>First launch on macOS (Gatekeeper)</h3>
+        <p>Because this build is distributed via GitHub (ad-hoc signed; Apple notarization coming after first sales), on first open macOS may say the developer cannot be verified. This is normal for indie Mac tools:</p>
+        <ol>
+          <li>In Finder, <strong>right-click</strong> <code>GEORadarPro.app</code> → <strong>Open</strong> → click <strong>Open</strong> again, OR</li>
+          <li>In Terminal: <code>xattr -cr /Applications/GEORadarPro.app</code> then open normally.</li>
+        </ol>
+        <p class="gk-note">After the first approval, it opens like any other Mac app.</p>
+      </aside>
+
       <div class="hero-meta">
         <span>✓ Swift 6.0 Native App + Python 3 Stdlib CLI</span>
         <span>✓ BYOK (OpenAI / Perplexity sonar-pro / DeepSeek)</span>
@@ -1229,6 +1300,17 @@
           </div>
         </div>
 
+
+        <aside class="gatekeeper-callout pricing-gk" aria-label="macOS Gatekeeper first-launch guide">
+          <h3>First launch on macOS (Gatekeeper)</h3>
+          <p>GitHub Release builds are ad-hoc signed (Apple notarization coming after first sales). If macOS says the developer cannot be verified:</p>
+          <ol>
+            <li>In Finder, <strong>right-click</strong> <code>GEORadarPro.app</code> → <strong>Open</strong> → click <strong>Open</strong> again, OR</li>
+            <li>In Terminal: <code>xattr -cr /Applications/GEORadarPro.app</code> then open normally.</li>
+          </ol>
+          <p class="gk-note">After the first approval, it opens like any other Mac app.</p>
+        </aside>
+
         <!-- FAQ Accordion -->
         <div class="faq-list">
           <h3 style="text-align:center; font-size:1.5rem; margin-bottom:24px;">Frequently Asked Questions</h3>
@@ -1246,6 +1328,12 @@
           <details class="faq-item">
             <summary>How can agencies monetize the White-Label Edition ($149)?</summary>
             <p>Enter your <code>--agency-name</code> and <code>--client-name</code> in the sidebar, run a 30-second audit, and click "Open Agency HTML Report" to export a polished executive PDF alongside deployable <code>llms.txt</code> and <code>JSON-LD</code> fixes. Agencies routinely sell this turnkey deliverable for $500–$2,000 per client.</p>
+          </details>
+
+
+          <details class="faq-item">
+            <summary>Why does macOS say “Apple cannot verify the developer” on first launch?</summary>
+            <p>GitHub Release builds are currently <strong>ad-hoc signed</strong> (not yet Apple Developer ID notarized). This is common for indie Mac apps before first sales. Fix: in Finder <strong>right-click</strong> <code>GEORadarPro.app</code> → <strong>Open</strong> → <strong>Open</strong>, or run <code>xattr -cr /Applications/GEORadarPro.app</code> in Terminal. After the first approval, it opens normally.</p>
           </details>
 
           <details class="faq-item">
